@@ -22,6 +22,8 @@ module.exports = {
       mediumlight: '#9BA4B5',
       medium: '#394867',
       mediumdark: '#212A3E',
+      dark: '#111a31',
+      black: '#000000'
     },
     extend: {},
   },
