@@ -17,7 +17,6 @@ const index = (props) => {
             placeholder="Contraseña"
             className="text-sm font-title py-2 px-3 w-64 text-left rounded-xl border-2 border-light focus:outline-none focus:border-primary hover:border-mediumlight transition-colors"
           />
-w
           <button className="mb-5 mt-10 py-3 px-8 bg-primary text-white font-body font-normal text-md rounded-xl hover:bg-primarydark transition-colors">
             Iniciar Sesion
           </button>
