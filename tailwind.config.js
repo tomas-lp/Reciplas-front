@@ -23,9 +23,15 @@ module.exports = {
       medium: '#394867',
       mediumdark: '#212A3E',
       dark: '#111a31',
-      black: '#000000'
+      black: '#000000',
+      grey: '#666666',
+      darkgrey: '#595959',
     },
-    extend: {},
+    extend: {
+      scale: {
+        '102': '1.02',
+      }
+    },
   },
   plugins: [],
 }
