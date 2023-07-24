@@ -1,7 +1,7 @@
-import Header from '../components/header'
-import ListaUsuarios from '../components/listaUsuarios';
+import Header from '../../components/header'
+import ListaUsuarios from '../../components/listaUsuarios';
 
-const usuarios = (props) => {
+const index = (props) => {
   return (
     <>
       <Header></Header>
@@ -13,4 +13,4 @@ const usuarios = (props) => {
   )
 }
 
-export default usuarios;
+export default index;
