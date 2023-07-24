@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FilaUsuario from "./filaUsuario";
 
 const ListaUsuarios = (props) => {
@@ -9,10 +10,12 @@ const ListaUsuarios = (props) => {
             <input type="text" placeholder="Busque un ID" className="bg-light text-black placeholder-gr text-md font-normal font-title focus:outline-none"/>
             <img src="/Icons/Grey/buscar.png" alt="" className="h-6"/>
           </div>
-          <div className="bg-primary flex flex-row justify-center px-5 py-5 rounded-3xl cursor-pointer hover:bg-primarydark transition-all">
-            <img src="/Icons/white/generarreporte.png" alt="" className="h-6 pr-2"/>
-            <span className="font-title text-white font-normal text-md">Generar Reporte</span>
-          </div>
+          <Link href="#f">
+            <div className="bg-primary flex flex-row justify-center px-5 py-5 rounded-3xl cursor-pointer hover:bg-primarydark transition-all">
+              <img src="/Icons/white/generarreporte.png" alt="" className="h-6 pr-2"/>
+              <span className="font-title text-white font-normal text-md">Generar Reporte</span>
+            </div>
+          </Link>
         </div>
 
         <div className="bg-verylight flex flex-col p-8 rounded-3xl">
@@ -27,9 +30,15 @@ const ListaUsuarios = (props) => {
             </div>
 
             <div className="flex flex-row items-end h-12">
-              <div className="bg-primary w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/imprimir.png" alt="" className="h-6"/></div>
-              <div className="bg-primary w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/eliminar.png" alt="" className="h-6"/></div>
-              <div className="bg-primary w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/agregar.png" alt="" className="h-6"/></div>
+              <Link href="#f">
+                <div className="bg-primary w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/imprimir.png" alt="" className="h-6"/></div>
+              </Link>
+              <Link href="#f">
+                <div className="bg-primary w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/eliminar.png" alt="" className="h-6"/></div>
+              </Link>
+              <Link href="/usuarios/nuevo">
+                <div className="bg-primary w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/agregar.png" alt="" className="h-6"/></div>
+              </Link>
             </div>
           </div>
 

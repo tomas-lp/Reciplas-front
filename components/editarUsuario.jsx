@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const EditarUsuario = (props) => {
   return(
     <div className="flex flex-col w-full max-w-screen-xl">
@@ -45,15 +47,19 @@ const EditarUsuario = (props) => {
       </div>
 
       <div className="flex flex-row justify-center">
-        <div className="flex justify-center items-center rounded-full bg-red p-5 mx-2 w-48 hover:bg-darkred cursor-pointer transition-all">
-          <img src="/Icons/White/cancelar.png" alt="Cancelar" className="h-6 mr-3"/>
-          <span className="text-white font-title text-lg font-medium">Cancelar</span>
-        </div>
+        <Link href="/usuarios/detalles">
+          <div className="flex justify-center items-center rounded-full bg-red p-5 mx-2 w-48 hover:bg-darkred cursor-pointer transition-all">
+            <img src="/Icons/White/cancelar.png" alt="Cancelar" className="h-6 mr-3"/>
+            <span className="text-white font-title text-lg font-medium">Cancelar</span>
+          </div>
+        </Link>
 
-        <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 w-48 hover:bg-primarydark cursor-pointer transition-all">
-          <img src="/Icons/White/confirmar.png" alt="Cancelar" className="h-6 mr-3"/>
-          <span className="text-white font-title text-lg font-medium">Confirmar</span>
-        </div>
+        <Link href="/usuarios/detalles">
+          <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 w-48 hover:bg-primarydark cursor-pointer transition-all">
+            <img src="/Icons/White/confirmar.png" alt="Cancelar" className="h-6 mr-3"/>
+            <span className="text-white font-title text-lg font-medium">Confirmar</span>
+          </div>
+        </Link>
       </div>
     </div>
   )

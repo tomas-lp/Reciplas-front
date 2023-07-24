@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const index = (props) => {
   return (
     <div className="min-w-screen min-h-screen bg-mediumdark flex flex-row justify-center items-center">
@@ -17,9 +19,11 @@ const index = (props) => {
             placeholder="Contraseña"
             className="text-sm font-title py-2 px-3 w-64 text-left rounded-xl border-2 border-light focus:outline-none focus:border-primary hover:border-mediumlight transition-colors"
           />
-          <button className="mb-5 mt-10 py-3 px-8 bg-primary text-white font-body font-normal text-md rounded-xl hover:bg-primarydark transition-colors">
-            Iniciar Sesion
-          </button>
+          <Link href="/menu">
+            <button className="mb-5 mt-10 py-3 px-8 bg-primary text-white font-body font-normal text-md rounded-xl hover:bg-primarydark transition-colors">
+              Iniciar Sesion
+            </button>
+          </Link>
         </div>
       </div>
     </div>

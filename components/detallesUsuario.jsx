@@ -1,3 +1,4 @@
+import Link from "next/link";
 const DetallesUsuario = (props) => {
   return(
     <div className="flex flex-col w-full max-w-screen-xl">
@@ -8,7 +9,9 @@ const DetallesUsuario = (props) => {
           </div>
           <div className="flex flex-row items-center">
             <div className="bg-primary w-16 p-2 rounded-xl flex justify-center items-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/eliminar.png" alt="" className="h-6"/></div>
-            <div className="bg-primary w-16 p-2 rounded-xl flex justify-center items-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/editar.png" alt="" className="h-6"/></div>
+            <Link href="/usuarios/editar">
+              <div className="bg-primary w-16 p-2 rounded-xl flex justify-center items-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/editar.png" alt="" className="h-6"/></div>
+            </Link> 
           </div>
         </div>
 
