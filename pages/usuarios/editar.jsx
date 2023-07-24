@@ -1,4 +1,4 @@
-import EditarUsuario from "../../components/editarUsuario";
+import EditarUsuario from "../../components/usuarios/editarUsuario";
 import Header from "../../components/header";
 
 const editar = (props) => {

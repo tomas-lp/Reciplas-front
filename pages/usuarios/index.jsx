@@ -1,5 +1,5 @@
 import Header from '../../components/header'
-import ListaUsuarios from '../../components/listaUsuarios';
+import ListaUsuarios from '../../components/usuarios/listaUsuarios';
 
 const index = (props) => {
   return (

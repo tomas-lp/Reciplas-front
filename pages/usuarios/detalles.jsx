@@ -1,4 +1,4 @@
-import DetallesUsuario from "../../components/detallesUsuario";
+import DetallesUsuario from "../../components/usuarios/detallesUsuario";
 import Header from "../../components/header";
 
 const detalles = (props) => {

@@ -1,4 +1,4 @@
-import AgregarUsuario from "../../components/agregarUsuario";
+import AgregarUsuario from "../../components/usuarios/agregarUsuario";
 import Header from "../../components/header";
 
 const nuevo = (props) => {
