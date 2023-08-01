@@ -27,7 +27,8 @@ const ListaUsuarios = (props) => {
                 <div className="hidden bg-light w-24 p-2 rounded-t-xl sm:flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer"><span className="text-title text-sm text-grey">Fecha nac.</span></div>
                 <div className="hidden bg-light w-24 p-2 rounded-t-xl sm:flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer"><span className="text-title text-sm text-grey">Sector</span></div>
               </div>
-                <div className="bg-darkgrey w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/ordenar.png" alt="" className="h-6"/></div>
+              
+              <div className="bg-darkgrey w-16 p-2 rounded-t-xl flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer"><img src="/Icons/White/ordenar.png" alt="" className="h-6"/></div>
             </div>  
 
             <div className="flex flex-row items-end justify-center h-12">
