@@ -10,7 +10,7 @@ const EditarCliente = (props) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
         <div className="bg-verylight flex flex-col items-center p-12 rounded-3xl">
           <h2 className="text-black font-title font-light text-2xl mb-5">Información</h2>
           <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
