@@ -27,12 +27,12 @@ module.exports = {
       grey: '#666666',
       darkgrey: '#595959',
       red: '#ed5353',
-      darkred: '#bf3434'
+      darkred: '#bf3434',
     },
     extend: {
       scale: {
-        '102': '1.02',
-      }
+        102: '1.02',
+      },
     },
   },
   plugins: [],
