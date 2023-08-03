@@ -82,7 +82,7 @@ const Menu = (props) => {
               </span>
             </div>
           </Link>
-          <Link href="#f">
+          <Link href="/pedidos">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
                 src="/Icons/white/pedidos.png"
