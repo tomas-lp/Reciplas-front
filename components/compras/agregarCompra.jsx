@@ -24,11 +24,6 @@ const AgregarCompra = (props) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row items-center h-12 md:h-auto">
-          <div className="bg-primary w-16 p-2 rounded-xl flex justify-center items-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
-            <img src="/Icons/White/eliminar.png" alt="" className="h-6" />
-          </div>
-        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5">
