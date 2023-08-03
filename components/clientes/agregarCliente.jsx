@@ -3,7 +3,7 @@ import Link from "next/link";
 const AgregarCliente = (props) => {
   return(
     <div className="flex flex-col w-full max-w-screen-xl">
-      <div className="grid grid-cols-2 gap-5 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
         <div className="bg-verylight flex flex-col items-center p-12 rounded-3xl">
           <h2 className="text-black font-title font-light text-2xl mb-5">Información</h2>
           <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
@@ -27,16 +27,16 @@ const AgregarCliente = (props) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-center">
-        <Link href="/clientes">
-          <div className="flex justify-center items-center rounded-full bg-red p-5 mx-2 w-48 hover:bg-darkred cursor-pointer transition-all">
+      <div className="flex flex-col sm:flex-row justify-center">
+        <Link href="/clientes" className="mb-2 sm:mb-0">
+          <div className="flex justify-center items-center rounded-full bg-red p-5 mx-2 sm:w-48 hover:bg-darkred cursor-pointer transition-all">
             <img src="/Icons/White/cancelar.png" alt="Cancelar" className="h-6 mr-3"/>
             <span className="text-white font-title text-lg font-medium">Cancelar</span>
           </div>
         </Link>
 
         <Link href="/clientes">
-          <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 w-48 hover:bg-primarydark cursor-pointer transition-all">
+          <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 sm:w-48 hover:bg-primarydark cursor-pointer transition-all">
             <img src="/Icons/White/confirmar.png" alt="Cancelar" className="h-6 mr-3"/>
             <span className="text-white font-title text-lg font-medium">Confirmar</span>
           </div>
