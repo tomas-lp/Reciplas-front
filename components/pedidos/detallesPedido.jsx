@@ -9,7 +9,7 @@ const DetallesPedido = (props) => {
             <span>Id: 0000</span>
           </div>
           <div className="flex flex-col sm:flex-row w-full md:w-auto justify-center items-center sm:h-10 px-5 bg-verylight rounded-xl font-title font-normal text-base">
-            <span className='sm:mr-8'>Cliente: Nombre</span>
+            <span className="sm:mr-8">Cliente: Nombre</span>
             <span>Fecha de registro: 01/01/2000</span>
           </div>
         </div>
@@ -32,9 +32,7 @@ const DetallesPedido = (props) => {
               <div className="flex flex-row items-end h-12 justify-between w-full">
                 <div className="flex flex-row items-end h-12">
                   <div className="bg-light w-16 p-2 rounded-t-xl flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer">
-                    <span className="text-title text-sm text-grey">
-                      Id
-                    </span>
+                    <span className="text-title text-sm text-grey">Id</span>
                   </div>
                   <div className="bg-light w-24 p-2 rounded-t-xl hidden sm:flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer">
                     <span className="text-title text-sm text-grey">
@@ -71,9 +69,11 @@ const DetallesPedido = (props) => {
       </div>
       <div className="flex flex-col md:flex-row md:justify-between mt-5">
         <div className="flex flex-col sm:flex-row w-full md:w-auto justify-center items-center md:h-10 py-2 md:py-0  px-5 bg-verylight rounded-xl font-title font-normal text-base">
-          <span className="text-black font-title font-normal text-lg">Estado actual: Fabricacion</span>
+          <span className="text-black font-title font-normal text-lg">
+            Estado actual: Fabricacion
+          </span>
         </div>
-        <div className='flex flex-col sm:flex-row sm:justify-center mt-5 md:mt-0'>
+        <div className="flex flex-col sm:flex-row sm:justify-center mt-5 md:mt-0">
           <div className="flex justify-center items-center h-10 px-5 mb-2 sm:mr-5 bg-primary rounded-xl cursor-pointer hover:bg-primarydark transition-all">
             <img src="/Icons/White/confirmar.png" alt="" className="h-5 mr-2" />
             <span className="text-white font-title font-normal text-lg">

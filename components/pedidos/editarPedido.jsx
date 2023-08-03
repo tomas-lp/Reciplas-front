@@ -12,7 +12,8 @@ const AgregarPedido = (props) => {
               <input
                 type="text"
                 className="sm:mb-0 bg-verylight text-center text-black font-title text-base font-normal outline-none w-24 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all"
-                placeholder="Ejemplo" defaultValue="Ejemplo"
+                placeholder="Ejemplo"
+                defaultValue="Ejemplo"
               />
             </div>
           </div>
@@ -52,7 +53,8 @@ const AgregarPedido = (props) => {
                 </div>
               </div>
             </div>
-            <FilaProductoEditable></FilaProductoEditable> {/*Pasar por props los default values*/}
+            <FilaProductoEditable></FilaProductoEditable>{' '}
+            {/*Pasar por props los default values*/}
             <div className="flex flex-row justify-end mt-5">
               <span className="flex justify-center items-center h-10 px-5 bg-darkgrey text-white rounded-xl font-title font-normal text-lg">
                 Total: $0000
