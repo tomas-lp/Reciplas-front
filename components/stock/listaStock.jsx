@@ -1,7 +1,42 @@
 import Link from 'next/link'
 import FilaStock from './filaStock'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const ListaStock = (props) => {
+
+  const [productos, setProductos] = useState([]);
+  const [materiasPrimas, setMateriasPrimas] = useState([]);
+  const [selector, setSelector] = useState("productos")
+
+  useEffect(()=>{
+    const urlProd = 'http://localhost:4000/api/productos'
+    
+    axios
+      .get(urlProd, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      })
+      .then(({data}) => {
+        setProductos(data);
+  });
+
+  const urlMat = 'http://localhost:4000/api/materiaprima'
+    
+    axios
+      .get(urlMat, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      })
+      .then(({data}) => {
+        setMateriasPrimas(data);
+  });
+  },[])
+
   return (
     <>
       <div className="flex flex-col w-full max-w-screen-xl">
@@ -34,10 +69,11 @@ const ListaStock = (props) => {
             name="tipo"
             id="selectTipo"
             className="border-2 border-light appearance-none py-1 px-2 outline-none hover:outline-none hover:border-primary rounded-xl transition-all"
+            onChange={(e)=>{setSelector(e.target.value)}}
           >
-            <option selected>Seleccione</option>
+            <option value="productos" selected>Productos producidos</option>
             <option value="materiaPrima">Materia Prima</option>
-            <option value="productos">Productos producidos</option>
+            
           </select>
         </div>
 
@@ -56,7 +92,7 @@ const ListaStock = (props) => {
                 </div>
                 <div className="bg-light w-28 p-2 rounded-t-xl hidden sm:flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer">
                   <span className="text-title text-sm text-grey">
-                    Cant. mínima
+                    {selector == "productos" ? "Precio ($)" : "Cant Minima"}
                   </span>
                 </div>
               </div>
@@ -79,8 +115,14 @@ const ListaStock = (props) => {
               </Link>
             </div>
           </div>
-
-          <FilaStock></FilaStock>
+          {selector == "productos" ? productos.map((producto)=>
+            <FilaStock id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} extra={producto.precio}></FilaStock>
+          )
+          :
+          materiasPrimas.map((materiaPrima)=>
+            <FilaStock id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} extra={materiaPrima.cantidad_min}></FilaStock>
+          )      
+          }
         </div>
       </div>
     </>
