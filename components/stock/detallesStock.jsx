@@ -13,6 +13,10 @@ const DetallesStock = (props) => {
   const [extra, setExtra] = useState('');
 
   useEffect(()=>{
+    if (!id) { //Espera a que sel router refresque el id para hacer el fetch de datos.
+      return;
+    }
+
     const esProdEnURL = router.query.es_prod === 'true';
     
     const url = esProdEnURL
@@ -36,7 +40,7 @@ const DetallesStock = (props) => {
   });
 
 
-  },[])
+  },[id])
 
   
   return (

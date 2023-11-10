@@ -67,11 +67,12 @@ const ListaStock = (props) => {
           <span className="text-title text-lg text-black mr-5">Tipo:</span>
           <select
             name="tipo"
+            defaultValue="productos"
             id="selectTipo"
             className="border-2 border-light appearance-none py-1 px-2 outline-none hover:outline-none hover:border-primary rounded-xl transition-all"
             onChange={(e)=>{setSelector(e.target.value)}}
           >
-            <option value="productos" selected>Productos producidos</option>
+            <option value="productos">Productos producidos</option>
             <option value="materiaPrima">Materia Prima</option>
             
           </select>
@@ -116,11 +117,11 @@ const ListaStock = (props) => {
             </div>
           </div>
           {selector == "productos" ? productos.map((producto)=>
-            <FilaStock id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} extra={producto.precio} es_prod={true}></FilaStock>
+            <FilaStock key={producto.id} id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} extra={producto.precio} es_prod={true}></FilaStock>
           )
           :
           materiasPrimas.map((materiaPrima)=>
-            <FilaStock id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} extra={materiaPrima.cantidad_min} es_prod={false}></FilaStock>
+            <FilaStock key={materiaPrima.id} id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} extra={materiaPrima.cantidad_min} es_prod={false}></FilaStock>
           )      
           }
         </div>
