@@ -2,7 +2,7 @@ import DetallesStock from '../../../components/stock/detallesStock'
 import Header from '../../../components/header'
 import { useRouter } from 'next/router';
 
-const detalles = (props) => {
+const Detalles = (props) => {
   const router = useRouter();
   const { id } = router.query;
   return (
@@ -18,4 +18,4 @@ const detalles = (props) => {
   )
 }
 
-export default detalles
+export default Detalles
