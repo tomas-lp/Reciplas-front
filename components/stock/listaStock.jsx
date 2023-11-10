@@ -117,11 +117,11 @@ const ListaStock = (props) => {
             </div>
           </div>
           {selector == "productos" ? productos.map((producto)=>
-            <FilaStock key={producto.id} id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} extra={producto.precio} es_prod={true}></FilaStock>
+            <FilaStock key={producto.id} id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} precio={producto.precio} es_prod={true}></FilaStock>
           )
           :
           materiasPrimas.map((materiaPrima)=>
-            <FilaStock key={materiaPrima.id} id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} extra={materiaPrima.cantidad_min} es_prod={false}></FilaStock>
+            <FilaStock key={materiaPrima.id} id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} cantidadMin={materiaPrima.cantidad_min} es_prod={false}></FilaStock>
           )      
           }
         </div>
