@@ -6,8 +6,21 @@ import axios from 'axios'
 const ListaStock = (props) => {
 
   const [productos, setProductos] = useState([]);
+  const [productosFiltrados, setProductosFiltrados] = useState([])
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [selector, setSelector] = useState("productos")
+  const [materiasPrimasFiltradas, setMateriasPrimasFiltradas] = useState([])
+  const [selector, setSelector] = useState("productos");
+  const [busqueda, setBusqueda] = useState("");
+
+  const filtrarElementos = () => {
+    if (busqueda != "") {
+      setProductosFiltrados(productos.filter(elem => String(elem.id).includes(busqueda)));
+      setMateriasPrimasFiltradas(materiasPrimas.filter(elem => String(elem.id).includes(busqueda)));
+    } else {
+      setProductosFiltrados(productos);
+      setMateriasPrimasFiltradas(materiasPrimas);
+    }
+  }
 
   useEffect(()=>{
     const urlProd = 'http://localhost:4000/api/productos'
@@ -21,7 +34,11 @@ const ListaStock = (props) => {
       })
       .then(({data}) => {
         setProductos(data);
-  });
+        setProductosFiltrados(data);
+      })
+      .catch((err) =>{
+        console.log(err);
+      });
 
   const urlMat = 'http://localhost:4000/api/materiaprima'
     
@@ -34,8 +51,14 @@ const ListaStock = (props) => {
       })
       .then(({data}) => {
         setMateriasPrimas(data);
-  });
+        setMateriasPrimasFiltradas(data);
+      })
+      .catch((err) =>{
+        console.log(err);
+      });
   },[])
+
+  useEffect(filtrarElementos, [busqueda])
 
   return (
     <>
@@ -46,6 +69,7 @@ const ListaStock = (props) => {
               type="text"
               placeholder="Busque un ID"
               className="bg-light text-black placeholder-gr text-md font-normal font-title focus:outline-none"
+              onChange={(e)=>{setBusqueda(e.target.value)}}
             />
             <img src="/Icons/Grey/buscar.png" alt="" className="h-6" />
           </div>
@@ -116,11 +140,11 @@ const ListaStock = (props) => {
               </Link>
             </div>
           </div>
-          {selector == "productos" ? productos.map((producto)=>
+          {selector == "productos" ? productosFiltrados.map((producto)=>
             <FilaStock key={producto.id} id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} precio={producto.precio} es_prod={true}></FilaStock>
           )
           :
-          materiasPrimas.map((materiaPrima)=>
+          materiasPrimasFiltradas.map((materiaPrima)=>
             <FilaStock key={materiaPrima.id} id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} cantidadMin={materiaPrima.cantidad_min} es_prod={false}></FilaStock>
           )      
           }
