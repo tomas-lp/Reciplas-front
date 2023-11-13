@@ -8,8 +8,8 @@ const ListaStock = (props) => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([])
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [materiasPrimasFiltradas, setMateriasPrimasFiltradas] = useState([])
-  const [selector, setSelector] = useState("productos");
+  const [materiasPrimasFiltradas, setMateriasPrimasFiltradas] = useState([]);
+  const [selectorTipo, setSelectorTipo] = useState("productos");
   const [busqueda, setBusqueda] = useState("");
 
   const filtrarElementos = () => {
@@ -22,10 +22,10 @@ const ListaStock = (props) => {
     }
   }
 
-  useEffect(()=>{
+  const fetchProductos = async () => {
     const urlProd = 'http://localhost:4000/api/productos'
     
-    axios
+    await axios
       .get(urlProd, {
         headers: {
           Accept: "application/json",
@@ -39,10 +39,12 @@ const ListaStock = (props) => {
       .catch((err) =>{
         console.log(err);
       });
+  }
 
-  const urlMat = 'http://localhost:4000/api/materiaprima'
+  const fetchMateriasPrimas = async () => {
+    const urlMat = 'http://localhost:4000/api/materiaprima'
     
-    axios
+    await axios
       .get(urlMat, {
         headers: {
           Accept: "application/json",
@@ -56,6 +58,11 @@ const ListaStock = (props) => {
       .catch((err) =>{
         console.log(err);
       });
+  }
+
+  useEffect(()=>{
+    fetchProductos();
+    fetchMateriasPrimas();
   },[])
 
   useEffect(filtrarElementos, [busqueda])
@@ -94,7 +101,7 @@ const ListaStock = (props) => {
             defaultValue="productos"
             id="selectTipo"
             className="border-2 border-light appearance-none py-1 px-2 outline-none hover:outline-none hover:border-primary rounded-xl transition-all"
-            onChange={(e)=>{setSelector(e.target.value)}}
+            onChange={(e)=>{setSelectorTipo(e.target.value)}}
           >
             <option value="productos">Productos producidos</option>
             <option value="materiaPrima">Materia Prima</option>
@@ -117,7 +124,7 @@ const ListaStock = (props) => {
                 </div>
                 <div className="bg-light w-28 p-2 rounded-t-xl hidden sm:flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer">
                   <span className="text-title text-sm text-grey">
-                    {selector == "productos" ? "Precio ($)" : "Cant Minima"}
+                    {selectorTipo == "productos" ? "Precio ($)" : "Cant Minima"}
                   </span>
                 </div>
               </div>
@@ -140,7 +147,7 @@ const ListaStock = (props) => {
               </Link>
             </div>
           </div>
-          {selector == "productos" ? productosFiltrados.map((producto)=>
+          {selectorTipo == "productos" ? productosFiltrados.map((producto)=>
             <FilaStock key={producto.id} id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} precio={producto.precio} es_prod={true}></FilaStock>
           )
           :
