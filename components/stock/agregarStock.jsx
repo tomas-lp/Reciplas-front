@@ -1,6 +1,45 @@
 import Link from 'next/link'
+import { useState } from 'react'
+import axios from 'axios';
 
 const AgregarStock = (props) => {
+
+  const [selectorTipo, setSelectorTipo] = useState("productos");
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [cantidad, setCantidad]=useState(0);
+  const [extra, setExtra] = useState(0);
+  
+  const guardarProducto = () => {
+    axios.post('http://localhost:4000/api/productos', {
+      nombre: nombre,
+      descripcion: descripcion,
+      cantidad: cantidad,
+      precio: parseFloat(extra)
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  const guardarMateriaPrima = () => {
+    axios.post('http://localhost:4000/api/materiaprima', {
+      nombre: nombre,
+      descripcion: descripcion,
+      cantidad: cantidad,
+      cantidad_min: parseInt(extra)
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
     <div className="flex flex-col w-full max-w-screen-xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
@@ -16,10 +55,10 @@ const AgregarStock = (props) => {
               name="tipo"
               id="selectTipo"
               className="border-0 border-b-2 w-fit bg-verylight border-verylight appearance-none text-black font-title text-lg font-normal py-1 outline-none hover:outline-none transition-all hover:border-b-2 hover:border-primary"
+              onChange={(e) => {setSelectorTipo(e.target.value)}}
             >
-              <option selected>Seleccione</option>
+              <option value="productos" selected>Productos producidos</option>
               <option value="materiaPrima">Materia Prima</option>
-              <option value="productos">Productos producidos</option>
             </select>
           </div>
           <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
@@ -31,6 +70,7 @@ const AgregarStock = (props) => {
               size="14"
               className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary hover:border-b-2 hover:border-primary transition-all"
               placeholder="Ejemplo"
+              onChange={(e) => {setNombre(e.target.value)}}
             />
           </div>
           <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
@@ -43,6 +83,7 @@ const AgregarStock = (props) => {
               rows="3"
               className="resize-none appearance-none bg-verylight text-black font-title text-lg font-normal outline-none h-24 max-w-xs w-auto border-b-2 border-verylight focus:border-b-2 focus:border-primary hover:border-b-2 hover:border-primary transition-all"
               placeholder="Ejemplo"
+              onChange={(e) => {setDescripcion(e.target.value)}}
             ></textarea>
           </div>
         </div>
@@ -59,30 +100,22 @@ const AgregarStock = (props) => {
               size="14"
               className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
               placeholder="0000"
+              onChange={(e) => {setCantidad(e.target.value)}}
             />
           </div>
           <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
             <span className="text-black font-title text-lg font-medium">
-              Cantidad mínima:
-            </span>
-            <div className="flex flex-row items-center">
-              <input
-                size="12"
-                type="text"
-                className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
-                placeholder="0000"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
-            <span className="text-black font-title text-lg font-medium">
-              Precio:
+              {
+                selectorTipo == "productos" ? "Precio:" : "Cantidad minima:" 
+              }
+              
             </span>
             <input
               type="text"
               size="14"
               className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
               placeholder="0000"
+              onChange={(e) => {setExtra(e.target.value)}}
             />
           </div>
         </div>
@@ -103,7 +136,9 @@ const AgregarStock = (props) => {
         </Link>
 
         <Link href="/stock">
-          <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 sm:w-48 hover:bg-primarydark cursor-pointer transition-all">
+          <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 sm:w-48 hover:bg-primarydark cursor-pointer transition-all"
+          onClick={selectorTipo == "productos" ? guardarProducto : guardarMateriaPrima}
+          >
             <img
               src="/Icons/White/confirmar.png"
               alt="Cancelar"

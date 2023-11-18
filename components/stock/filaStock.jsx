@@ -8,7 +8,7 @@ const FilaStock = (props) => {
           <span className="text-title text-sm text-grey">{props.id}</span>
         </div>
         <div className="flex flex-row justify-center w-24 mx-2">
-          <span className="text-title text-sm text-grey">{props.nombre}</span>
+          <span className="text-title text-sm text-grey truncate">{props.nombre}</span>
         </div>
         <div className="hidden sm:flex flex-row justify-center w-24 mx-2">
           <span className="text-title text-sm text-grey">{props.cantidad}</span>

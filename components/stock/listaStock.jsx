@@ -6,7 +6,7 @@ import axios from 'axios'
 const ListaStock = (props) => {
 
   const [productos, setProductos] = useState([]);
-  const [productosFiltrados, setProductosFiltrados] = useState([])
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [materiasPrimasFiltradas, setMateriasPrimasFiltradas] = useState([]);
   const [selectorTipo, setSelectorTipo] = useState("productos");
