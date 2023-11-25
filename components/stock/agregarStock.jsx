@@ -1,16 +1,36 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import axios from 'axios';
+import PopupError from './popupError';
+import { useRouter } from 'next/router';
 
 const AgregarStock = (props) => {
+  const router = useRouter();
 
   const [selectorTipo, setSelectorTipo] = useState("productos");
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [cantidad, setCantidad]=useState(0);
   const [extra, setExtra] = useState(0);
+  const [errorDatos, setErrorDatos] = useState(false);
+
+  const datosIncorrectos = () => {
+    if (nombre == "" || descripcion == "" || cantidad <= 0 || extra <= 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
   
   const guardarProducto = () => {
+    if (datosIncorrectos()) {
+      setErrorDatos(true);
+      setTimeout(()=>{
+        setErrorDatos(false);
+      },3000)
+      return;
+    }
+
     axios.post('http://localhost:4000/api/productos', {
       nombre: nombre,
       descripcion: descripcion,
@@ -19,13 +39,25 @@ const AgregarStock = (props) => {
     })
     .then(function (response) {
       console.log(response);
+      router.replace("/stock");
     })
     .catch(function (error) {
-      console.log(error);
+      setErrorDatos(true);
+      setTimeout(()=>{
+        setErrorDatos(false);
+      },3000);
     });
   }
 
   const guardarMateriaPrima = () => {
+    if (datosIncorrectos()) {
+      setErrorDatos(true);
+      setTimeout(()=>{
+        setErrorDatos(false);
+      },3000);
+      return;
+    }
+
     axios.post('http://localhost:4000/api/materiaprima', {
       nombre: nombre,
       descripcion: descripcion,
@@ -34,9 +66,13 @@ const AgregarStock = (props) => {
     })
     .then(function (response) {
       console.log(response);
+      router.replace("/stock");
     })
     .catch(function (error) {
-      console.log(error);
+      setErrorDatos(true);
+      setTimeout(()=>{
+        setErrorDatos(false);
+      },3000);
     });
   }
 
@@ -54,10 +90,11 @@ const AgregarStock = (props) => {
             <select
               name="tipo"
               id="selectTipo"
+              defaultValue="productos"
               className="border-0 border-b-2 w-fit bg-verylight border-verylight appearance-none text-black font-title text-lg font-normal py-1 outline-none hover:outline-none transition-all hover:border-b-2 hover:border-primary"
               onChange={(e) => {setSelectorTipo(e.target.value)}}
             >
-              <option value="productos" selected>Productos producidos</option>
+              <option value="productos">Productos producidos</option>
               <option value="materiaPrima">Materia Prima</option>
             </select>
           </div>
@@ -68,6 +105,7 @@ const AgregarStock = (props) => {
             <input
               type="text"
               size="14"
+              maxLength={20}
               className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary hover:border-b-2 hover:border-primary transition-all"
               placeholder="Ejemplo"
               onChange={(e) => {setNombre(e.target.value)}}
@@ -81,6 +119,7 @@ const AgregarStock = (props) => {
               name=""
               id=""
               rows="3"
+              maxLength={100}
               className="resize-none appearance-none bg-verylight text-black font-title text-lg font-normal outline-none h-24 max-w-xs w-auto border-b-2 border-verylight focus:border-b-2 focus:border-primary hover:border-b-2 hover:border-primary transition-all"
               placeholder="Ejemplo"
               onChange={(e) => {setDescripcion(e.target.value)}}
@@ -96,7 +135,7 @@ const AgregarStock = (props) => {
               Cantidad:
             </span>
             <input
-              type="text"
+              type="number"
               size="14"
               className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
               placeholder="0000"
@@ -111,7 +150,7 @@ const AgregarStock = (props) => {
               
             </span>
             <input
-              type="text"
+              type="number"
               size="14"
               className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
               placeholder="0000"
@@ -135,7 +174,7 @@ const AgregarStock = (props) => {
           </div>
         </Link>
 
-        <Link href="/stock">
+        <Link href="#f">
           <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 sm:w-48 hover:bg-primarydark cursor-pointer transition-all"
           onClick={selectorTipo == "productos" ? guardarProducto : guardarMateriaPrima}
           >
@@ -150,6 +189,9 @@ const AgregarStock = (props) => {
           </div>
         </Link>
       </div>
+      {
+        errorDatos && <PopupError/>
+      }
     </div>
   )
 }
