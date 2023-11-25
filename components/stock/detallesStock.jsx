@@ -1,54 +1,52 @@
 import Link from 'next/link'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
-import router from 'next/router';
+import { useState } from 'react'
+import { useEffect } from 'react'
+import axios from 'axios'
+import router from 'next/router'
 
-const parseFecha = (fecha) => { //Convierte fecha a formato dd/mm/aaaa
-  const dd = new Date(fecha).getDate();
-  const mm = new Date(fecha).getMonth()+1;
-  const aaaa = new Date(fecha).getFullYear();
+const parseFecha = (fecha) => {
+  //Convierte fecha a formato dd/mm/aaaa
+  const dd = new Date(fecha).getDate()
+  const mm = new Date(fecha).getMonth() + 1
+  const aaaa = new Date(fecha).getFullYear()
   return `${dd}/${mm}/${aaaa}`
 }
 
 const DetallesStock = (props) => {
-  const { id } = props;
+  const { id } = props
 
-  const [producto, setProducto] = useState([]);
-  const [materiasPrima, setMateriasPrima] = useState([]);
-  const [tipo, setTipo] = useState('');
-  const [extra, setExtra] = useState('');
+  const [producto, setProducto] = useState([])
+  const [materiasPrima, setMateriasPrima] = useState([])
+  const [tipo, setTipo] = useState('')
+  const [extra, setExtra] = useState('')
 
-  useEffect(()=>{
-    if (!id) { //Espera a que el router refresque el id para hacer el fetch de datos.
-      return;
+  useEffect(() => {
+    if (!id) {
+      //Espera a que el router refresque el id para hacer el fetch de datos.
+      return
     }
 
-    const esProdEnURL = router.query.es_prod === 'true';
-    
+    const esProdEnURL = router.query.es_prod === 'true'
+
     const url = esProdEnURL
       ? `http://localhost:4000/api/productos/${id}`
-      : `http://localhost:4000/api/materiaprima/${id}`;
-    
+      : `http://localhost:4000/api/materiaprima/${id}`
 
-    setTipo(esProdEnURL ? 'Producto Producido' : 'Materia Prima');
-    setExtra(esProdEnURL ? 'Precio' : 'Cantidad Mínima');
-    
+    setTipo(esProdEnURL ? 'Producto Producido' : 'Materia Prima')
+    setExtra(esProdEnURL ? 'Precio' : 'Cantidad Mínima')
+
     axios
       .get(url, {
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8",
+          Accept: 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8',
         },
       })
-      .then(({data}) => {
-        setProducto(data);
-  });
+      .then(({ data }) => {
+        setProducto(data)
+      })
+  }, [id])
 
-
-  },[id])
-
-  
   return (
     <div className="flex flex-col w-full max-w-screen-xl">
       <div className="flex flex-col lg:flex-row justify-between items-center mb-5 lg:h-12">
@@ -60,7 +58,9 @@ const DetallesStock = (props) => {
             <span>Tipo: {tipo}</span>
           </div>
           <div className="flex justify-center w-full md:w-auto items-center h-10 px-5 bg-verylight rounded-xl font-title font-normal text-base">
-            <span>Fecha de registro: {parseFecha(producto.fecha_actualizacion)}</span>
+            <span>
+              Fecha de registro: {parseFecha(producto.fecha_actualizacion)}
+            </span>
           </div>
         </div>
         <div className="flex flex-row items-center h-12 lg:h-auto">
@@ -108,32 +108,29 @@ const DetallesStock = (props) => {
               {extra}
             </span>
             <div className="flex flex-row items-center">
-            {producto.precio ? (
-          <input
-            disabled
-            type="text"
-            size="14"
-            className="bg-verylight text-black font-title text-md font-normal outline-none h-10 w-48 border-b-2 border-verylight"
-            defaultValue={"$"+producto.precio}
-            placeholder="Precio"
-          />
-        ) : (
-          <input
-            disabled
-            size="14"
-            type="text"
-            className="bg-verylight text-black font-title text-md font-normal outline-none h-10 border-b-2 border-verylight"
-            defaultValue={producto.cantidad_min}
-            placeholder="Cantidad Mínima"
-          />
-        )}
+              {producto.precio ? (
+                <input
+                  disabled
+                  type="text"
+                  size="14"
+                  className="bg-verylight text-black font-title text-md font-normal outline-none h-10 w-48 border-b-2 border-verylight"
+                  defaultValue={'$' + producto.precio}
+                  placeholder="Precio"
+                />
+              ) : (
+                <input
+                  disabled
+                  size="14"
+                  type="text"
+                  className="bg-verylight text-black font-title text-md font-normal outline-none h-10 border-b-2 border-verylight"
+                  defaultValue={producto.cantidad_min}
+                  placeholder="Cantidad Mínima"
+                />
+              )}
             </div>
           </div>
           <div className="flex flex-col max-w-xl w-full rounded-xl p-3">
-            <span className="text-black font-title text-lg font-medium">
-            
-            </span>
-            
+            <span className="text-black font-title text-lg font-medium"></span>
           </div>
         </div>
       </div>

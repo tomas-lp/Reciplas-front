@@ -4,66 +4,69 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const ListaStock = (props) => {
-
-  const [productos, setProductos] = useState([]);
-  const [productosFiltrados, setProductosFiltrados] = useState([]);
-  const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [materiasPrimasFiltradas, setMateriasPrimasFiltradas] = useState([]);
-  const [selectorTipo, setSelectorTipo] = useState("productos");
-  const [busqueda, setBusqueda] = useState("");
+  const [productos, setProductos] = useState([])
+  const [productosFiltrados, setProductosFiltrados] = useState([])
+  const [materiasPrimas, setMateriasPrimas] = useState([])
+  const [materiasPrimasFiltradas, setMateriasPrimasFiltradas] = useState([])
+  const [selectorTipo, setSelectorTipo] = useState('productos')
+  const [busqueda, setBusqueda] = useState('')
 
   const filtrarElementos = () => {
-    if (busqueda != "") {
-      setProductosFiltrados(productos.filter(elem => String(elem.id).includes(busqueda)));
-      setMateriasPrimasFiltradas(materiasPrimas.filter(elem => String(elem.id).includes(busqueda)));
+    if (busqueda != '') {
+      setProductosFiltrados(
+        productos.filter((elem) => String(elem.id).includes(busqueda))
+      )
+      setMateriasPrimasFiltradas(
+        materiasPrimas.filter((elem) => String(elem.id).includes(busqueda))
+      )
     } else {
-      setProductosFiltrados(productos);
-      setMateriasPrimasFiltradas(materiasPrimas);
+      setProductosFiltrados(productos)
+      setMateriasPrimasFiltradas(materiasPrimas)
     }
   }
 
   const fetchProductos = async () => {
     const urlProd = 'http://localhost:4000/api/productos'
-    
+
     await axios
       .get(urlProd, {
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8",
+          Accept: 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8',
         },
       })
-      .then(({data}) => {
-        setProductos(data);
-        setProductosFiltrados(data);
+      .then(({ data }) => {
+        setProductos(data)
+        setProductosFiltrados(data)
       })
-      .catch((err) =>{
-        console.log(err);
-      });
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const fetchMateriasPrimas = async () => {
     const urlMat = 'http://localhost:4000/api/materiaprima'
-    
+
     await axios
       .get(urlMat, {
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8",
+          Accept: 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8',
         },
       })
-      .then(({data}) => {
-        setMateriasPrimas(data);
-        setMateriasPrimasFiltradas(data);
+      .then(({ data }) => {
+        setMateriasPrimas(data)
+        setMateriasPrimasFiltradas(data)
       })
-      .catch((err) =>{
-        console.log(err);
-      });
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
-  useEffect(()=>{
-    fetchProductos();
-    fetchMateriasPrimas();
-  },[])
+  useEffect(() => {
+    fetchProductos()
+    fetchMateriasPrimas()
+  }, [])
 
   useEffect(filtrarElementos, [busqueda])
 
@@ -76,7 +79,9 @@ const ListaStock = (props) => {
               type="text"
               placeholder="Busque un ID"
               className="bg-light text-black placeholder-gr text-md font-normal font-title focus:outline-none"
-              onChange={(e)=>{setBusqueda(e.target.value)}}
+              onChange={(e) => {
+                setBusqueda(e.target.value)
+              }}
             />
             <img src="/Icons/Grey/buscar.png" alt="" className="h-6" />
           </div>
@@ -101,11 +106,12 @@ const ListaStock = (props) => {
             defaultValue="productos"
             id="selectTipo"
             className="border-2 border-light appearance-none py-1 px-2 outline-none hover:outline-none hover:border-primary rounded-xl transition-all"
-            onChange={(e)=>{setSelectorTipo(e.target.value)}}
+            onChange={(e) => {
+              setSelectorTipo(e.target.value)
+            }}
           >
             <option value="productos">Productos producidos</option>
             <option value="materiaPrima">Materia Prima</option>
-            
           </select>
         </div>
 
@@ -124,7 +130,7 @@ const ListaStock = (props) => {
                 </div>
                 <div className="bg-light w-28 p-2 rounded-t-xl hidden sm:flex justify-center mx-2 h-8 hover:h-10 transition-all cursor-pointer">
                   <span className="text-title text-sm text-grey">
-                    {selectorTipo == "productos" ? "Precio ($)" : "Cant Minima"}
+                    {selectorTipo == 'productos' ? 'Precio ($)' : 'Cant Minima'}
                   </span>
                 </div>
               </div>
@@ -147,14 +153,27 @@ const ListaStock = (props) => {
               </Link>
             </div>
           </div>
-          {selectorTipo == "productos" ? productosFiltrados.map((producto)=>
-            <FilaStock key={producto.id} id={producto.id} nombre={producto.nombre} cantidad={producto.cantidad} precio={producto.precio} es_prod={true}></FilaStock>
-          )
-          :
-          materiasPrimasFiltradas.map((materiaPrima)=>
-            <FilaStock key={materiaPrima.id} id={materiaPrima.id} nombre={materiaPrima.nombre} cantidad={materiaPrima.cantidad} cantidadMin={materiaPrima.cantidad_min} es_prod={false}></FilaStock>
-          )      
-          }
+          {selectorTipo == 'productos'
+            ? productosFiltrados.map((producto) => (
+                <FilaStock
+                  key={producto.id}
+                  id={producto.id}
+                  nombre={producto.nombre}
+                  cantidad={producto.cantidad}
+                  precio={producto.precio}
+                  es_prod={true}
+                ></FilaStock>
+              ))
+            : materiasPrimasFiltradas.map((materiaPrima) => (
+                <FilaStock
+                  key={materiaPrima.id}
+                  id={materiaPrima.id}
+                  nombre={materiaPrima.nombre}
+                  cantidad={materiaPrima.cantidad}
+                  cantidadMin={materiaPrima.cantidad_min}
+                  es_prod={false}
+                ></FilaStock>
+              ))}
         </div>
       </div>
     </>

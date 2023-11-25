@@ -1,21 +1,22 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
 const index = (props) => {
-  const router = useRouter();
+  const router = useRouter()
 
-  const [usuario, setUsuario] = useState("");
+  const [usuario, setUsuario] = useState('')
 
   const handleLogin = (event) => {
-    event.preventDefault();
-    localStorage.setItem('usuario', usuario);
-    router.replace("/menu");
+    event.preventDefault()
+    localStorage.setItem('usuario', usuario)
+    router.replace('/menu')
   }
 
-  useEffect(()=>{  //Cada vez que vuelva al login, se "cierra la sesion" del usuario.
-    localStorage.setItem('usuario','');
-  },[])
+  useEffect(() => {
+    //Cada vez que vuelva al login, se "cierra la sesion" del usuario.
+    localStorage.setItem('usuario', '')
+  }, [])
 
   return (
     <div className="min-w-screen min-h-screen bg-mediumdark flex flex-row justify-center items-center">
@@ -29,7 +30,9 @@ const index = (props) => {
             type="text"
             placeholder="Usuario"
             className="text-sm font-title py-2 px-3 w-48 text-left rounded-xl border-2 border-light focus:outline-none focus:border-primary hover:border-mediumlight mb-6 transition-colors md:w-64 lg:w-48 2xl:w-60"
-            onChange={(e)=>{setUsuario(e.target.value)}}
+            onChange={(e) => {
+              setUsuario(e.target.value)
+            }}
           />
           <input
             type="password"
@@ -37,8 +40,10 @@ const index = (props) => {
             className="text-sm font-title py-2 px-3 w-48 text-left rounded-xl border-2 border-light focus:outline-none focus:border-primary hover:border-mediumlight transition-colors md:w-64 lg:w-48 2xl:w-60"
           />
           <Link href="#f" className="mb-5 mt-10 md:mt-16 lg:mt-10 2xl:mt-16">
-            <button className="py-3 px-8 bg-primary text-white font-body font-normal text-sm rounded-xl hover:bg-primarydark transition-colors" 
-              onClick={handleLogin}>
+            <button
+              className="py-3 px-8 bg-primary text-white font-body font-normal text-sm rounded-xl hover:bg-primarydark transition-colors"
+              onClick={handleLogin}
+            >
               Iniciar Sesion
             </button>
           </Link>

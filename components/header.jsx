@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react'
 import CoverSesionNoIniciada from './coverSesionNoIniciada'
 
 const Header = (props) => {
+  const [usuario, setUsuario] = useState('')
 
-  const [usuario, setUsuario] = useState("")
-
-  useEffect(()=>{
-    setUsuario(localStorage.getItem("usuario"))
+  useEffect(() => {
+    setUsuario(localStorage.getItem('usuario'))
   })
 
   return (
@@ -35,7 +34,7 @@ const Header = (props) => {
           <img src="/Other/perfil.png" alt="" className="h-12 md:h-16" />
         </div>
       </div>
-      {usuario=="" && <CoverSesionNoIniciada/>}
+      {usuario == '' && <CoverSesionNoIniciada />}
     </div>
   )
 }

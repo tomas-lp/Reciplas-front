@@ -13,7 +13,7 @@ const Menu = (props) => {
           <Link href="/usuarios" className="">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/usuario.png"}
+                src={'/Icons/white/usuario.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />
@@ -25,7 +25,7 @@ const Menu = (props) => {
           <Link href="/clientes">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/clientes.png"}
+                src={'/Icons/white/clientes.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />
@@ -37,7 +37,7 @@ const Menu = (props) => {
           <Link href="/proveedores">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/proveedores.png"}
+                src={'/Icons/white/proveedores.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />
@@ -49,7 +49,7 @@ const Menu = (props) => {
           <Link href="/ventas">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/ventas.png"}
+                src={'/Icons/white/ventas.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />
@@ -61,7 +61,7 @@ const Menu = (props) => {
           <Link href="/compras">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/compras.png"}
+                src={'/Icons/white/compras.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />
@@ -73,7 +73,7 @@ const Menu = (props) => {
           <Link href="/stock">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/stock.png"}
+                src={'/Icons/white/stock.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />
@@ -85,7 +85,7 @@ const Menu = (props) => {
           <Link href="/pedidos">
             <div className="rounded-3xl bg-mediumdark flex flex-row items-center justify-center p-5 hover:bg-dark cursor-pointer transition-all hover:shadow-2xl sm:flex-col">
               <img
-                src={"/Icons/white/pedidos.png"}
+                src={'/Icons/white/pedidos.png'}
                 alt=""
                 className="h-10 mr-4 sm:h-12 sm:mr-0 sm:mb-4"
               />

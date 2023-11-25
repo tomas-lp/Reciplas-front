@@ -1,10 +1,10 @@
 import DetallesStock from '../../../components/stock/detallesStock'
 import Header from '../../../components/header'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
 const Detalles = (props) => {
-  const router = useRouter();
-  const { id } = router.query;
+  const router = useRouter()
+  const { id } = router.query
   return (
     <>
       <Header></Header>
