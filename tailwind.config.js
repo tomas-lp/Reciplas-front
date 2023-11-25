@@ -28,6 +28,7 @@ module.exports = {
       darkgrey: '#595959',
       red: '#ed5353',
       darkred: '#bf3434',
+      blue: '#2770e6'
     },
     extend: {
       scale: {

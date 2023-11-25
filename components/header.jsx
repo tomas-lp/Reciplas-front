@@ -1,6 +1,15 @@
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import CoverSesionNoIniciada from './coverSesionNoIniciada'
 
 const Header = (props) => {
+
+  const [usuario, setUsuario] = useState("")
+
+  useEffect(()=>{
+    setUsuario(localStorage.getItem("usuario"))
+  })
+
   return (
     <div className="">
       <div className="bg-mediumdark w-full p-5 flex flex-row justify-between items-center">
@@ -14,7 +23,7 @@ const Header = (props) => {
         <div className="flex flex-col-reverse sm:flex-row items-center">
           <div className="flex flex-col items-center sm:items-end mr-3">
             <span className="text-white font-normal text-lg font-title hidden sm:block">
-              Bienvenido, Usuario
+              Bienvenido, {usuario}
             </span>
             <Link
               href="/"
@@ -26,6 +35,7 @@ const Header = (props) => {
           <img src="/Other/perfil.png" alt="" className="h-12 md:h-16" />
         </div>
       </div>
+      {usuario=="" && <CoverSesionNoIniciada/>}
     </div>
   )
 }
