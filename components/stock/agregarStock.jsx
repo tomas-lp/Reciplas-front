@@ -32,7 +32,7 @@ const AgregarStock = (props) => {
     }
 
     axios
-      .post(`https://${process.env.NEXT_PUBLIC_APIURL}/api/productos`, {
+      .post(`${process.env.NEXT_PUBLIC_APIURL}/api/productos`, {
         nombre: nombre,
         descripcion: descripcion,
         cantidad: cantidad,
@@ -60,7 +60,7 @@ const AgregarStock = (props) => {
     }
 
     axios
-      .post(`https://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`, {
+      .post(`${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`, {
         nombre: nombre,
         descripcion: descripcion,
         cantidad: cantidad,
