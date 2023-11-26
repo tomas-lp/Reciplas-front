@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-const index = (props) => {
+const Index = (props) => {
   const router = useRouter()
 
   const [usuario, setUsuario] = useState('')
@@ -53,4 +53,4 @@ const index = (props) => {
   )
 }
 
-export default index
+export default Index
