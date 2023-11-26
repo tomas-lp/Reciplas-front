@@ -27,7 +27,7 @@ const ListaStock = (props) => {
   }
 
   const fetchProductos = async () => {
-    const urlProd = `http://${process.env.NEXT_PUBLIC_APIURL}/api/productos`
+    const urlProd = `https://${process.env.NEXT_PUBLIC_APIURL}/api/productos`
 
     await axios
       .get(urlProd, {
@@ -46,7 +46,7 @@ const ListaStock = (props) => {
   }
 
   const fetchMateriasPrimas = async () => {
-    const urlMat = `http://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`
+    const urlMat = `https://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`
 
     await axios
       .get(urlMat, {

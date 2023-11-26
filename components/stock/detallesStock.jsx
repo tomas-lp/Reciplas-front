@@ -29,8 +29,8 @@ const DetallesStock = (props) => {
     const esProdEnURL = router.query.es_prod === 'true'
 
     const url = esProdEnURL
-      ? `http://${process.env.NEXT_PUBLIC_APIURL}/api/productos/${id}`
-      : `http://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima/${id}`
+      ? `https://${process.env.NEXT_PUBLIC_APIURL}/api/productos/${id}`
+      : `https://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima/${id}`
 
     setTipo(esProdEnURL ? 'Producto Producido' : 'Materia Prima')
     setExtra(esProdEnURL ? 'Precio' : 'Cantidad Mínima')
