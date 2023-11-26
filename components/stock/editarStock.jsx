@@ -94,7 +94,7 @@ const EditarStock = (props) => {
       </div>
 
       <div className="flex flex-col sm:flex-row justify-center">
-        <Link href="/stock/detalles" className="mb-2 sm:mb-0">
+        <Link href="/stock" className="mb-2 sm:mb-0">
           <div className="flex justify-center items-center rounded-full bg-red p-5 mx-2 sm:w-48 hover:bg-darkred cursor-pointer transition-all">
             <img
               src="/Icons/White/cancelar.png"
@@ -107,7 +107,7 @@ const EditarStock = (props) => {
           </div>
         </Link>
 
-        <Link href="/stock/detalles">
+        <Link href="/stock">
           <div className="flex justify-center items-center rounded-full bg-primary p-5 mx-2 sm:w-48 hover:bg-primarydark cursor-pointer transition-all">
             <img
               src="/Icons/White/confirmar.png"
