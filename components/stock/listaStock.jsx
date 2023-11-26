@@ -27,7 +27,7 @@ const ListaStock = (props) => {
   }
 
   const fetchProductos = async () => {
-    const urlProd = `http://${process.env.NEXT_PUBLIC_APIURL}/api/productos`
+    const urlProd = `https://${process.env.NEXT_PUBLIC_APIURL}/api/productos`
 
     await axios
       .get(urlProd, {
@@ -46,7 +46,7 @@ const ListaStock = (props) => {
   }
 
   const fetchMateriasPrimas = async () => {
-    const urlMat = `http://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`
+    const urlMat = `https://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`
 
     await axios
       .get(urlMat, {
@@ -90,7 +90,7 @@ const ListaStock = (props) => {
           <Link href="#f" className="w-full sm:w-auto">
             <div className="mb-5 sm:mb-0 bg-primary flex flex-row justify-center px-5 py-5 rounded-3xl cursor-pointer hover:bg-primarydark transition-all">
               <img
-                src="/Icons/white/generarreporte.png"
+                src="/Icons/White/generarreporte.png"
                 alt=""
                 className="h-6 pr-2"
               />
