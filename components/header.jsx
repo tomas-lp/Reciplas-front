@@ -34,7 +34,9 @@ const Header = (props) => {
           <img src="/Other/perfil.png" alt="" className="h-12 md:h-16" />
         </div>
       </div>
-      {usuario == '' && <CoverSesionNoIniciada />}
+      {!['admin', 'compras', 'ventas', 'produccion'].includes(usuario) && (
+        <CoverSesionNoIniciada />
+      )}
     </div>
   )
 }

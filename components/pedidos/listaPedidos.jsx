@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import FilaPedido from './filaPedido'
+import { useState, useEffect } from 'react'
 
 const ListaPedidos = (props) => {
+  const [usuario, setUsuario] = useState('')
+
+  useEffect(() => {
+    setUsuario(localStorage.getItem('usuario'))
+  })
   return (
     <>
       <div className="flex flex-col w-full max-w-screen-xl">
@@ -60,11 +66,17 @@ const ListaPedidos = (props) => {
                   <img src="/Icons/White/imprimir.png" alt="" className="h-6" />
                 </div>
               </Link>
-              <Link href="/pedidos/nuevo">
-                <div className="bg-primary w-16 p-2 rounded-xl lg:rounded-b-none flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
-                  <img src="/Icons/White/agregar.png" alt="" className="h-6" />
-                </div>
-              </Link>
+              {['ventas'].includes(usuario) && (
+                <Link href="/pedidos/nuevo">
+                  <div className="bg-primary w-16 p-2 rounded-xl lg:rounded-b-none flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
+                    <img
+                      src="/Icons/White/agregar.png"
+                      alt=""
+                      className="h-6"
+                    />
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
 

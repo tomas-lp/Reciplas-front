@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const ListaStock = (props) => {
+  const [usuario, setUsuario] = useState('')
   const [productos, setProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([])
   const [materiasPrimas, setMateriasPrimas] = useState([])
@@ -64,6 +65,7 @@ const ListaStock = (props) => {
   }
 
   useEffect(() => {
+    setUsuario(localStorage.getItem('usuario'))
     fetchProductos()
     fetchMateriasPrimas()
   }, [])
@@ -146,11 +148,17 @@ const ListaStock = (props) => {
                   <img src="/Icons/White/eliminar.png" alt="" className="h-6" />
                 </div>
               </Link>
-              <Link href="/stock/nuevo">
-                <div className="bg-primary w-16 p-2 rounded-xl lg:rounded-b-none flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
-                  <img src="/Icons/White/agregar.png" alt="" className="h-6" />
-                </div>
-              </Link>
+              {['admin'].includes(usuario) && (
+                <Link href="/stock/nuevo">
+                  <div className="bg-primary w-16 p-2 rounded-xl lg:rounded-b-none flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
+                    <img
+                      src="/Icons/White/agregar.png"
+                      alt=""
+                      className="h-6"
+                    />
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
           {selectorTipo == 'productos'

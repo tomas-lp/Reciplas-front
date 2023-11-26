@@ -1,7 +1,14 @@
 import Link from 'next/link'
 import FilaCliente from './filaCliente'
+import { useState, useEffect } from 'react'
 
 const ListaClientes = (props) => {
+  const [usuario, setUsuario] = useState('')
+
+  useEffect(() => {
+    setUsuario(localStorage.getItem('usuario'))
+  }, [])
+
   return (
     <>
       <div className="flex flex-col w-full max-w-screen-xl">
@@ -68,11 +75,17 @@ const ListaClientes = (props) => {
                   <img src="/Icons/White/eliminar.png" alt="" className="h-6" />
                 </div>
               </Link>
-              <Link href="/clientes/nuevo">
-                <div className="bg-primary w-16 p-2 rounded-xl lg:rounded-b-none flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
-                  <img src="/Icons/White/agregar.png" alt="" className="h-6" />
-                </div>
-              </Link>
+              {['ventas'].includes(usuario) && (
+                <Link href="/clientes/nuevo">
+                  <div className="bg-primary w-16 p-2 rounded-xl lg:rounded-b-none flex justify-center mx-2 h-10 hover:h-12 transition-all cursor-pointer">
+                    <img
+                      src="/Icons/White/agregar.png"
+                      alt=""
+                      className="h-6"
+                    />
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
 
