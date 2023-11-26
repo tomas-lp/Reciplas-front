@@ -25,9 +25,6 @@ const AgregarStock = (props) => {
   const guardarProducto = () => {
     if (datosIncorrectos()) {
       setErrorDatos(true)
-      setTimeout(() => {
-        setErrorDatos(false)
-      }, 3000)
       return
     }
 
@@ -53,9 +50,6 @@ const AgregarStock = (props) => {
   const guardarMateriaPrima = () => {
     if (datosIncorrectos()) {
       setErrorDatos(true)
-      setTimeout(() => {
-        setErrorDatos(false)
-      }, 3000)
       return
     }
 
@@ -203,7 +197,7 @@ const AgregarStock = (props) => {
           </div>
         </Link>
       </div>
-      {errorDatos && <PopupError />}
+      {errorDatos && <PopupError set={setErrorDatos} />}
     </div>
   )
 }
