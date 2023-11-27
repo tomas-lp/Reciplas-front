@@ -7,7 +7,7 @@ const Header = (props) => {
 
   useEffect(() => {
     setUsuario(localStorage.getItem('usuario'))
-  })
+  }, [])
 
   return (
     <div className="">

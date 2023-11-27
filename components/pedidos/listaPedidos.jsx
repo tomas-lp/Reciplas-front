@@ -7,7 +7,7 @@ const ListaPedidos = (props) => {
 
   useEffect(() => {
     setUsuario(localStorage.getItem('usuario'))
-  })
+  }, [])
   return (
     <>
       <div className="flex flex-col w-full max-w-screen-xl">
