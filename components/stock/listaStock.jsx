@@ -26,10 +26,10 @@ const ListaStock = (props) => {
     }
   }
 
-  const fetchProductos = async () => {
-    const urlProd = `https://${process.env.NEXT_PUBLIC_APIURL}/api/productos`
+  const fetchProductos = () => {
+    const urlProd = `${process.env.NEXT_PUBLIC_APIURL}/api/productos`
 
-    await axios
+    axios
       .get(urlProd, {
         headers: {
           Accept: 'application/json',
@@ -45,10 +45,10 @@ const ListaStock = (props) => {
       })
   }
 
-  const fetchMateriasPrimas = async () => {
-    const urlMat = `https://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`
+  const fetchMateriasPrimas = () => {
+    const urlMat = `${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`
 
-    await axios
+    axios
       .get(urlMat, {
         headers: {
           Accept: 'application/json',

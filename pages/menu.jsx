@@ -7,7 +7,7 @@ const Menu = (props) => {
 
   useEffect(() => {
     setUsuario(localStorage.getItem('usuario'))
-  })
+  }, [])
   return (
     <>
       <Header></Header>

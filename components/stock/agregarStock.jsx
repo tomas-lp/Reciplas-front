@@ -25,14 +25,11 @@ const AgregarStock = (props) => {
   const guardarProducto = () => {
     if (datosIncorrectos()) {
       setErrorDatos(true)
-      setTimeout(() => {
-        setErrorDatos(false)
-      }, 3000)
       return
     }
 
     axios
-      .post(`https://${process.env.NEXT_PUBLIC_APIURL}/api/productos`, {
+      .post(`${process.env.NEXT_PUBLIC_APIURL}/api/productos`, {
         nombre: nombre,
         descripcion: descripcion,
         cantidad: cantidad,
@@ -53,14 +50,11 @@ const AgregarStock = (props) => {
   const guardarMateriaPrima = () => {
     if (datosIncorrectos()) {
       setErrorDatos(true)
-      setTimeout(() => {
-        setErrorDatos(false)
-      }, 3000)
       return
     }
 
     axios
-      .post(`https://${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`, {
+      .post(`${process.env.NEXT_PUBLIC_APIURL}/api/materiaprima`, {
         nombre: nombre,
         descripcion: descripcion,
         cantidad: cantidad,
@@ -203,7 +197,7 @@ const AgregarStock = (props) => {
           </div>
         </Link>
       </div>
-      {errorDatos && <PopupError />}
+      {errorDatos && <PopupError set={setErrorDatos} />}
     </div>
   )
 }
