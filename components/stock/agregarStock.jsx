@@ -87,7 +87,7 @@ const AgregarStock = (props) => {
               name="tipo"
               id="selectTipo"
               defaultValue="productos"
-              className="border-0 border-b-2 w-fit bg-verylight border-verylight appearance-none text-black font-title text-lg font-normal py-1 outline-none hover:outline-none transition-all hover:border-b-2 hover:border-primary"
+              className="border-0 w-fit mt-2 px-3 py-1 rounded-xl shadow-md bg-white appearance-none text-darkgrey font-title text-lg font-normal outline-none hover:outline-none transition-all"
               onChange={(e) => {
                 setSelectorTipo(e.target.value)
               }}
@@ -104,7 +104,7 @@ const AgregarStock = (props) => {
               type="text"
               size="14"
               maxLength={20}
-              className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary hover:border-b-2 hover:border-primary transition-all"
+              className="bg-white text-black mt-2 px-3 py-1 rounded-xl shadow-md font-title text-lg font-normal outline-none h-10 w-48 transition-all"
               placeholder="Ejemplo"
               onChange={(e) => {
                 setNombre(e.target.value)
@@ -120,7 +120,7 @@ const AgregarStock = (props) => {
               id=""
               rows="3"
               maxLength={100}
-              className="resize-none appearance-none bg-verylight text-black font-title text-lg font-normal outline-none h-24 max-w-xs w-auto border-b-2 border-verylight focus:border-b-2 focus:border-primary hover:border-b-2 hover:border-primary transition-all"
+              className="resize-none appearance-none mt-2 px-3 py-1 rounded-xl shadow-md bg-white text-black font-title text-lg font-normal outline-none h-24 max-w-xs w-auto border-none border-b-2 border-verylight transition-all"
               placeholder="Ejemplo"
               onChange={(e) => {
                 setDescripcion(e.target.value)
@@ -139,7 +139,7 @@ const AgregarStock = (props) => {
             <input
               type="number"
               size="14"
-              className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
+              className="bg-white text-black mt-2 px-3 py-1 rounded-xl shadow-md font-title text-lg font-normal outline-none h-10 w-48"
               placeholder="0000"
               onChange={(e) => {
                 setCantidad(e.target.value)
@@ -153,7 +153,7 @@ const AgregarStock = (props) => {
             <input
               type="number"
               size="14"
-              className="bg-verylight text-black font-title text-lg font-normal outline-none h-10 w-48 border-b-2 border-verylight focus:border-b-2 focus:border-primary transition-all hover:border-b-2 hover:border-primary"
+              className="bg-white text-black mt-2 px-3 py-1 rounded-xl shadow-md font-title text-lg font-normal outline-none h-10 w-48 transition-all"
               placeholder="0000"
               onChange={(e) => {
                 setExtra(e.target.value)
