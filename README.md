@@ -11,4 +11,6 @@ npm install
 npm run dev
 ```
 
+El servidor de back-end utilizado se encuentra en [este repositorio](https://github.com/tomas-lp/reciplas-back).
+
 La última versión se encuentra actualmente desplegada en https://reciplas.vercel.app
